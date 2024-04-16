@@ -122,6 +122,7 @@ var res = str.toUpperCase();
 console.log(res)
 
 */
+/*
 var events = require ('events');
 var eventEmitter = new events.EventEmitter();
 // CREATE AN EVENT HANDLER
@@ -133,4 +134,15 @@ var myEventHandler = ()=>{
 eventEmitter.on('scream', myEventHandler);
 
 //FIRE THE 'SCREAM' EVENT
-eventEmitter.emit('scream');
+eventEmitter.emit('scream');*/
+
+var http = require('http');
+http.createServer((req, res)=>{
+    res.writeHead(200, {'Content-Type' : 'text/html'});
+    res.write('<form action="fileupload" method="post" enctype="multipart/form-data">');
+    res.write('<input type="file" name="filetoupload"> <br>');
+    res.write('<input type="submit">');
+
+    res.write('</form>');
+    return res.end();
+}).listen(8080);
