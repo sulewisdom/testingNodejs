@@ -136,6 +136,8 @@ eventEmitter.on('scream', myEventHandler);
 //FIRE THE 'SCREAM' EVENT
 eventEmitter.emit('scream');*/
 
+/*
+
 var http = require('http');
 var formidable = require('formidable');
 var fs = require('fs');
@@ -165,3 +167,29 @@ http.createServer((req, res)=>{
     return res.end();
     }
 }).listen(8080);
+*/
+///having an error here
+var nodemailer = require('nodemailer');
+
+var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth:{
+        user: 'wizzybankz2017@gmail.com',
+        pass: 'Wizzybankz@2019'
+    }
+});
+
+var mailOptions = {
+    from: 'wizzybankz2017@gmail.com',
+    to: 'sulewisdomdavid@gmail.com',
+    subject: 'Sending email using Nod.js',
+    text: 'That was easy!'
+};
+
+transporter.sendMail(mailOptions, function (error, info){
+    if (error) {
+        console.log(error);
+    }else{
+    console.log('Email sent: ' + info.response);
+}
+});
