@@ -169,6 +169,7 @@ http.createServer((req, res)=>{
 }).listen(8080);
 */
 ///having an error here
+/*git 
 var nodemailer = require('nodemailer');
 
 var transporter = nodemailer.createTransport({
@@ -192,4 +193,53 @@ transporter.sendMail(mailOptions, function (error, info){
     }else{
     console.log('Email sent: ' + info.response);
 }
+});
+//seems i need to enable 2fa and also generate app password from this email for this too work perfectly
+*/
+//Learning MySQL
+//CONNECTIONG TO A DATABASE
+/*var mysql = require ('mysql2');
+var con = mysql.createConnection({
+    host: "127.0.0.1",
+    user: "root",
+    password: "Wizzybankz@2017"
+});
+con.connect(function(err){
+    if (err) throw err;
+    console.log("Connected!");
+});*/
+//QUERING And CREATING A DATABASE
+/*var mysql = require ('mysql2');
+var con = mysql.createConnection({
+    host: "127.0.0.1",
+    user: "root",
+    password: "Wizzybankz@2017"
+});
+con.connect((err)=>{
+    if (err) return err;
+    console.log("COnnected");
+    con.query("CREATE DATABASE mydb" , (err, result)=>{
+        if(err) return err;
+        console.log("Database created");
+    });
+});*/
+
+//CREATE TABLE
+var mysql = require ('mysql2');
+var con = mysql.createConnection({
+    host: "127.0.0.1",
+    user: "root",
+    password: "Wizzybankz@2017",
+    database: "mydb"
+});
+
+
+con.connect((err)=>{
+    if (err) return err;
+    console.log("Connected");
+    var sql = "CREATE TABLE customers (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), address VARCHAR(255))" ;
+    con.query(sql, (err, result)=>{
+        if(err) return err;
+        console.log("Table created");
+    });
 });
