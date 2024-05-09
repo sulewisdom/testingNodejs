@@ -237,17 +237,11 @@ var con = mysql.createConnection({
 con.connect((err)=>{
     if (err) return err;
     console.log("Connected");
-    var sql = " INSERT INTO customers (name, address) VALUES ?";
-    var values = [
-        ['Company inc', 'Highway 37'],
-        ['peter', 'Lowcost 3'],
-        ['john', 'upstreet'],
-        ['joseph', 'downstreet']
-    ];
-
-    con.query(sql, [values], (err, result)=>{
+    var sql = " INSERT INTO customers (name, address) VALUES ('Michelle', '23 dadinkowa')";
+    
+    con.query(sql, (err, result)=>{
         if(err) return err;
 
-        console.log("NUmber of records inserted : " + result.affectedRows);
+        console.log("1 record inserted, ID: " + result.insertId);
     });
 });
